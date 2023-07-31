@@ -1,11 +1,15 @@
 public class LoanLife {
     private LoanPayment[] _payments;
-    private float _totalLoanCost;
+    private float _totalLoanCost = 0f;
+    private float _loanAmount = 0f;
 
     public LoanLife(LoanPayment[] payments) {
         this._payments = payments;
 
-        _totalLoanCost = payments[0].MonthlyPayment * payments.Length;
+        if (payments.Length > 0) {
+            _totalLoanCost = payments[0].MonthlyPayment * payments.Length;
+            _loanAmount = payments[0].BeginningLoanBalance;
+        }
     }
 
     public float[] InterestByYear() {
@@ -27,6 +31,18 @@ public class LoanLife {
     public float TotalLoanCost {
         get {
             return _totalLoanCost;
+        }
+    }
+
+    public float TotalInterest {
+        get {
+            return LoanAmount - TotalLoanCost;
+        }
+    }
+
+    public float LoanAmount {
+        get {
+            return _loanAmount;
         }
     }
 }

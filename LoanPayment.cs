@@ -28,6 +28,12 @@ public class LoanPayment {
         }
     }
 
+    public float BeginningLoanBalance {
+        get {
+            return _beginningLoanBalance;
+        }
+    }
+
     public float MonthlyPayment {
         get {
             return _payment;
